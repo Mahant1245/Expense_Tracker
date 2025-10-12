@@ -9,7 +9,7 @@ const obj=[
 },
 {
     name:"Investment",
-    color: "rgb(54, 162, 235)",
+    color: "rgba(37, 82, 179, 1)",
     
 },
 {
