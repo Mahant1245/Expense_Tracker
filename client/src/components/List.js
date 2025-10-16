@@ -33,7 +33,7 @@ function Transaction({category}) {
     return(
         <div className=" item flex justify-center bg-gray-50 py-2 rounded-r" style={{ borderRight: `8px solid ${category.color ?? "#d6c2c2ff"}` }} >
             {/* installed boxicons lib */}
-            <button className="px-3"><box-icon color={category.color??"#e5e5e5"} size="20px" name="trash"></box-icon></button>
+            <button className="px-3"><box-icon color={category.color??"#f80606ff"} size="20px" name="trash"></box-icon></button>
             <span className="block w-full">{category.name ?? ""}</span>
         </div>
     )
