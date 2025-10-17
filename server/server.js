@@ -3,6 +3,7 @@ const app = express();
 const cors= require('cors');
 
 require('dotenv').config({path:"./config.env"});
+console.log('URI:', process.env.ATLAS_URI);
 const port =process.env.PORT||5000;//either use the port in .env file or use 5000
 
 // use middleware
@@ -30,5 +31,7 @@ connection.then(db=>{
 
 // using routes
 app.use(require('./routes/route'));
+
+
 
 
