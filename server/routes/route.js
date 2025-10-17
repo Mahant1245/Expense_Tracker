@@ -7,6 +7,6 @@ const routes = require('express').Router();
 routes.route('/api/categories')
 
 // calls the create_Categories function from controller.js
-.get(controller.create_Categories);
+.post(controller.create_Categories);
 
 module.exports=routes;
