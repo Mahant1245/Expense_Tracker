@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 const cors= require('cors');
 
+//required for render
+app.use(cors({
+    origin: "*",
+    methods: "GET,POST,DELETE,PUT"
+}));
+
+
 require('dotenv').config({path:"./config.env"});
 console.log('URI:', process.env.ATLAS_URI);
 const port =process.env.PORT||5000;//either use the port in .env file or use 5000

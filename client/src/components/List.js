@@ -35,7 +35,7 @@ export default function List(){
 
 
     return(
-        <div className="flex flex-col py-6 gap-3">
+        <div className="history-list flex flex-col py-6 gap-3">
             <h1 className="py-4 font-bold text-xl">History</h1>
             <button onClick={handleDeleteAll} className="px-4 py-2 bg-red-500 text-white rounded-md"> Delete All </button>
             {Transactions}

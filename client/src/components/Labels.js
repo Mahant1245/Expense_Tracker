@@ -18,7 +18,7 @@ export default function Labels(){
         Transactions=getLabels(data,'type').map((v,i)=><LabelComponent key={i} data={v}></LabelComponent>)
     }
     else if(isError){
-        Transactions=<div>Eror</div>
+        Transactions=<div>Error</div>
     }
 
     return(
