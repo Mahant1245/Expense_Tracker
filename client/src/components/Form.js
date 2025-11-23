@@ -2,24 +2,29 @@ import React from "react";
 import{useForm} from "react-hook-form";
 import List from "./List";
 import apiSlice, {default  as api} from '../store/apliSlice'
+import BudgetInput from "./BudgetInput";
+
 
 export default function Form(){
 
     const{register,handleSubmit,resetField}=useForm();
     const [addTransaction]=api.useAddTransactionMutation();
 
-    const onSubmit =async(data)=>{
-        if(!data)return{};
+    const onSubmit = async (data) => {
+        if (!data) return {};
         await addTransaction(data).unwrap();
-        resetField('name');
-        resetField('amount');
-    }
+        resetField("name");
+        resetField("amount");
+        window.dispatchEvent(new Event("transactionAdded"));
+    };
+
 
     return(
         <div className="form max-w-sm mx-auto w-96">
             <h1 className="font-bold pb-4 text-xl">Transaction</h1>
 
             {/* design for form */}
+            <BudgetInput onBudgetChange={(b) => localStorage.setItem("budget", b)} />
             <form id = "form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-4">
                     <div className="input-group">

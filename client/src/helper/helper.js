@@ -49,6 +49,8 @@ export function chart_Data(transaction,custom){
     }
 }
 
+
+
 // if user wants to use custom colors they can otherwise it will use config
 return custom??config
 
