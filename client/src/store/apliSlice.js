@@ -44,8 +44,26 @@ export const apiSlice=createApi({
                 body:recordId
             }),
             invalidatesTags:['transaction']
+        }),
+
+        deleteAll: builder.mutation({
+            query: () => ({
+                url: '/api/transaction/deleteAll',
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['transaction']
         })
+
     })
 })
 
+export const { 
+  useGetCategoriesQuery,
+  useGetLabelsQuery,
+  useAddTransactionMutation,
+  useDeleteTransactionMutation,
+  useDeleteAllMutation
+} = apiSlice;
+
 export default apiSlice;
+

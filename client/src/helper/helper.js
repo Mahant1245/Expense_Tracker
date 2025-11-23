@@ -28,33 +28,43 @@ export function getLabels(transaction){
     return percent;
 }
 
-export function chart_Data(transaction,custom){
+export function chart_Data(transaction, custom) {
+    let dataValue = getSum(transaction);
+    let bg = _.uniq(_.map(transaction, (a) => a.color));
 
-    let dataValue=getSum(transaction)
-    let bg=_.map(transaction,a=>a.color)
-    bg=_.uniq(bg)//only passes unique color. this is inbuilt function of lodash
-    const config ={
-    data:{
-        datasets: [
-    {
-      data:dataValue,
-      backgroundColor: bg,
-      hoverOffset: 4,
-      borderRadius: 10,
-      spacing: 10
-    }]
-    },
-    options:{
-        cutout:95
-    }
+    const config = {
+        data: {
+            labels: transaction.map((a) => a.type),
+            datasets: [
+                {
+                    data: dataValue,
+                    backgroundColor: bg,
+                    hoverOffset: 4,
+                    borderRadius: 10,
+                    spacing: 10
+                }
+            ]
+        },
+        options: {
+            cutout: 95,
+            plugins: {
+                tooltip: {
+                    enabled: true,
+                    callbacks: {
+                        label: function (context) {
+                            const label = context.label || "";
+                            const value = context.raw || 0;
+                            return `${label}: £${value}`;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    return custom ?? config;
 }
 
-
-
-// if user wants to use custom colors they can otherwise it will use config
-return custom??config
-
-}
 
 export function getTotal(transaction){
     return _.sum(getSum(transaction));

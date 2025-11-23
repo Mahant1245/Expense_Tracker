@@ -20,6 +20,6 @@ const transactions_model=new Schema({
 const Categories=mongoose.model('categories',categories_model)
 const Transactions=mongoose.model('transaction',transactions_model);
 
-exports.default=Transactions;
+
 module.exports={Categories,Transactions}
 

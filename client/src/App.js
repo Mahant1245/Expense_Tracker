@@ -17,7 +17,7 @@ function App() {
 
         {/* grid column */}
         <div className='grid md:grid-cols-2 gap-4'>
-          <BudgetInput onBudgetChange={(val)=> localStorage.setItem("budget",val)} />
+          
 
           {/* chart */}
           <Graph>

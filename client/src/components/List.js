@@ -8,6 +8,13 @@ export default function List(){
 
     const {data,isFetching,isSuccess,isError}=api.useGetLabelsQuery()
     const [deleteTransaction]=api.useDeleteTransactionMutation()
+    const [deleteAll] = api.useDeleteAllMutation();
+
+    const handleDeleteAll = () => {
+        if (window.confirm("Delete your entire history?")) {
+            deleteAll();
+        }
+    };
     let Transactions;
 
     const handlerClick =(e)=>{
@@ -26,9 +33,11 @@ export default function List(){
     }
     
 
+
     return(
         <div className="flex flex-col py-6 gap-3">
             <h1 className="py-4 font-bold text-xl">History</h1>
+            <button onClick={handleDeleteAll} className="px-4 py-2 bg-red-500 text-white rounded-md"> Delete All </button>
             {Transactions}
             
         </div>
